@@ -1,0 +1,352 @@
+{% load static %}
+<!Doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Цаатан Гуталын дэлгүүр</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="ThemeZaa">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
+    <meta name="description"
+        content="Litho is a clean and modern design, BootStrap 4 responsive, business and portfolio multipurpose HTML5 template with 36+ ready homepage demos.">
+    <!-- favicon icon -->
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon-57x57.png' %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'images/apple-touch-icon-72x72.png' %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'images/apple-touch-icon-114x114.png' %}">
+    <!-- style sheets and font icons  -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-icons.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/theme-vendors.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+    <!-- revolution slider -->
+    <link rel='stylesheet' href="revolution/revolution-addons/bubblemorph/css/revolution.addon.bubblemorph.css"
+        type='text/css' media='all' />
+    <link rel="stylesheet" type="text/css" href="{% static 'revolution/css/settings.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'revolution/css/layers.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'revolution/css/navigation.css' %}">
+
+</head>
+
+<body data-mobile-nav-style="classic">
+    <!-- start header -->
+    <header class="header-with-topbar">
+        <div class="top-bar bg-extra-dark-gray d-none d-md-inline-block padding-35px-lr md-no-padding-lr"
+            style="top: 0px;">
+            <div class="container-fluid nav-header-container">
+                <div class="d-flex flex-wrap align-items-center">
+                    <div class="col-12 text-center text-sm-left col-sm-auto mr-auto pl-lg-0">
+
+                    </div>
+                    <div class="col-auto d-none d-sm-block text-right px-lg-0 font-size-0">
+                        <div class="top-bar-contact">
+                            <span class="top-bar-contact-list border-none md-no-padding-right">
+                                <i class="feather icon-feather-phone-call icon-extra-small text-white"></i>7715 1414
+                            </span>
+                            <span class="top-bar-contact-list d-none d-lg-inline-block border-none pr-0">
+                                <i class="feather icon-feather-map-pin icon-extra-small text-white"></i>
+                                'Төв салбар' Билэг их дэлгүүр, 5-р давхар
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- start navigation -->
+        <nav
+            class="navbar navbar-expand-lg top-space navbar-light bg-white header-light fixed-top navbar-boxed header-reverse-scroll">
+            <div class="container-fluid nav-header-container">
+                <div class="col-6 col-lg-2 mr-auto pl-lg-0">
+                    <a class="navbar-brand" href="#">
+                        <img src="{% static 'images/logo.png' %}" data-at2x="{% static 'images/logo.png' %}"
+                            class="default-logo" alt="">
+                        <img src="{% static 'images/logo.png' %}" data-at2x="{% static 'images/logo.png' %}"
+                            class="alt-logo" alt="">
+                        <img src="{% static 'images/logo.png' %}" data-at2x="{% static 'images/logo.png' %}"
+                            class="mobile-logo" alt="">
+                    </a>
+                </div>
+                <div class="col-auto menu-order px-lg-0">
+                    <button class="navbar-toggler float-right" type="button" data-toggle="collapse"
+                        data-target="#navbarNav" aria-controls="navbarNav" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-line"></span>
+                        <span class="navbar-toggler-line"></span>
+                        <span class="navbar-toggler-line"></span>
+                        <span class="navbar-toggler-line"></span>
+                    </button>
+                    <div class=" collapse navbar-collapse justify-content-center" id="navbarNav">
+                        <ul class="navbar-nav alt-font">
+                            <li class="nav-item dropdown megamenu">
+                                <a href="#" class="nav-link">Нүүр</a>
+                                <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"
+                                    aria-hidden="true"></i>
+
+                            </li>
+                            <li class="nav-item dropdown simple-dropdown">
+                                <a href="#product" class="nav-link">Бүтээгдэхүүн</a>
+                                <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"
+                                    aria-hidden="true"></i>
+
+                            </li>
+                            <li class="nav-item dropdown simple-dropdown">
+                                <a href="#shop" class="nav-link">Урамшуулал</a>
+                                <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"
+                                    aria-hidden="true"></i>
+
+                            </li>
+                            <li class="nav-item dropdown megamenu">
+                                <a href="#address" class="nav-link">Хаяг байршил</a>
+                                <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"
+                                    aria-hidden="true"></i>
+
+                            </li>
+                            <li class="nav-item dropdown simple-dropdown">
+                                <a href="#about" class="nav-link">Бидний тухай</a>
+                                <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"
+                                    aria-hidden="true"></i>
+                            </li>
+                            <li class="nav-item dropdown simple-dropdown">
+                                <a href="https://play.google.com/store/apps"
+                                    class="btn btn-large btn-transparent-dark-gray d-table d-lg-inline-block margins">App
+                                    татах<i class="fas fa-arrow-right right-icon"></i></a>
+                                <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"
+                                    aria-hidden="true"></i>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    {% block content %}
+
+    {% endblock %}
+
+    <footer class="footer-dark bg-slate-blue">
+        <div class="footer-top padding-five-tb lg-padding-eight-tb sm-padding-50px-tb">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <!-- start footer column -->
+                    <div class="col-12 col-lg-3 col-md-4 col-sm-6 md-margin-40px-bottom xs-margin-25px-bottom">
+                        <a id="about" class="footer-logo margin-25px-bottom d-inline-block"><img
+                                src="{% static 'images/logo.png' %}"></a>
+                        {% for titles in abouts %}
+                        <p class="w-95 lg-w-100">{{titles.description2}}</p>
+                        {% endfor %}
+                    </div>
+                    <!-- end footer column -->
+                    <!-- start footer column -->
+                    <div class="col-12 col-lg-3 col-sm-6">
+                        <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom">Апп татах</span>
+                        <div class="w-100 d-inline-block margin-10px-top">
+                            <ul class="instafeed-grid instafeed-wrapper grid grid-3col xl-grid-3col lg-grid-3col md-grid-3col sm-grid-3col xs-grid-3col gutter-small"
+                                data-total="3" style="position: relative; height: 97.8167px;">
+                                <li class="grid-sizer"></li>
+                                <li class="grid-item"
+                                    style="position: absolute; left: 0%; top: 0px; animation: 0s ease 0s 1 normal none running none;">
+                                    <figure><a href="https://play.google.com/store/apps" target="_blank"><img
+                                                src="{% static '/images/googleplay.png' %}" class="insta-image"
+                                                alt=""><span class="insta-counts"><i
+                                                    class="fab fa-google-play"></i></span></a>
+                                    </figure>
+                                </li>
+
+                                <li class="grid-item"
+                                    style="position: absolute; left: 33.3272%; top: 0px; animation: 0s ease 0s 1 normal none running none;">
+                                    <figure><a href="https://www.apple.com/app-store/" target="_blank"><img
+                                                src="{% static '/images/appstore.png' %}" class="insta-image"
+                                                alt=""><span class="insta-counts"><i
+                                                    class="fab fa-app-store"></i></span></a>
+                                    </figure>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                    </div>
+
+                    <!-- end footer column -->
+                    <!-- start footer column -->
+                    <!-- start footer column -->
+
+                    <!-- end footer column -->
+                    <!-- end footer column -->
+                    <!-- start footer column -->
+                    <div class="col-12 col-lg-3 col-sm-6">
+                        <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom">Facebook</span>
+                        <div class="w-100 d-inline-block margin-10px-top">
+                            <ul class="instafeed-grid instafeed-wrapper grid grid-3col xl-grid-3col lg-grid-3col md-grid-3col sm-grid-3col xs-grid-3col gutter-small"
+                                data-total="3" style="position: relative; height: 97.8167px;">
+                                <li class="grid-sizer"></li>
+                                <li class="grid-item"
+                                    style="position: absolute; left: 0%; top: 0px; animation: 0s ease 0s 1 normal none running none;">
+                                    <figure><a href="https://www.facebook.com/tsaatangutal1" target="_blank"><img
+                                                src="https://scontent.fuln2-1.fna.fbcdn.net/v/t1.0-9/148104682_3697905216912152_1227539155538755786_o.jpg?_nc_cat=110&ccb=1-3&_nc_sid=730e14&_nc_ohc=IKxEFuHCZUIAX-gH7EE&_nc_ht=scontent.fuln2-1.fna&oh=eec5e96aae901662ef88cf9b041356bb&oe=6075FBF5"
+                                                class="insta-image" alt=""><span class="insta-counts"><i
+                                                    class="fab fa-facebook"></i></span></a></figure>
+                                </li>
+
+                                <li class="grid-item"
+                                    style="position: absolute; left: 33.3272%; top: 0px; animation: 0s ease 0s 1 normal none running none;">
+                                    <figure><a href="https://www.facebook.com/tsaatangutal1" target="_blank"><img
+                                                src="https://scontent.fuln2-1.fna.fbcdn.net/v/t1.0-9/148542237_3697905336912140_3143090469532205384_o.jpg?_nc_cat=109&ccb=1-3&_nc_sid=730e14&_nc_ohc=AP9MY0CiLNkAX-Pv3Co&_nc_oc=AQnlTDKQIFXOXukwT9EVoY661jmP_rKle68jogAyeTZEgy1noa3Skg6NThjjHBLbyCc&_nc_ht=scontent.fuln2-1.fna&oh=908136cb94c50c0e266949a84bab7c2d&oe=6075D3CA"
+                                                class="insta-image" alt=""><span class="insta-counts"><i
+                                                    class="fab fa-facebook"></i></span></a></figure>
+                                </li>
+
+                                <li class="grid-item"
+                                    style="position: absolute; left: 66.6545%; top: 0px; animation: 0s ease 0s 1 normal none running none;">
+                                    <figure><a href="https://www.facebook.com/tsaatangutal1" target="_blank"><img
+                                                src="https://scontent.fuln2-1.fna.fbcdn.net/v/t1.0-9/148622536_3697905250245482_7896349553027755559_o.jpg?_nc_cat=110&ccb=1-3&_nc_sid=730e14&_nc_ohc=X4B2a0hXpJQAX_F_xhG&_nc_ht=scontent.fuln2-1.fna&oh=3533bde62d6b88fa57e7d70ba11058e1&oe=6075A7EB"
+                                                class="insta-image" alt=""><span class="insta-counts"><i
+                                                    class="fab fa-facebook"></i></span></a></figure>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <!-- end footer column -->
+                    <div class="col-12 col-lg-3 col-md-4 col-sm-6 md-margin-40px-bottom xs-margin-25px-bottom">
+                        <span
+                            class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">Цаатан
+                            гутлын дэлгүүр</span>
+                        <ul>
+                            <li><a href="#">Холбоо барих</a></li>
+                            <li><a href="tel:77151414"><i
+                                        class="feather icon-feather-phone-call icon-extra-small text-white"></i> 7715
+                                    1414
+                                </a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- end footer -->
+    <!-- start scroll to top -->
+    <a class="scroll-top-arrow" href="javascript:void(0);"><i class="feather icon-feather-arrow-up"></i></a>
+    <!-- end scroll to top -->
+    <!-- javascript -->
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/theme-vendors.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+    <!-- revolution js files -->
+    <script type="text/javascript" src="{% static 'revolution/js/jquery.themepunch.tools.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'revolution/js/jquery.themepunch.revolution.min.js' %}"></script>
+
+    <!-- BUBBLEMORPH ADD-ON FILES -->
+    <script type='text/javascript'
+        src='revolution/revolution-addons/bubblemorph/js/revolution.addon.bubblemorph.min.js'></script>
+    <!-- slider revolution 5.0 extensions (load extensions only on local file systems ! the following part can be removed on server for on demand loading) -->
+    <!-- <script type="text/javascript" src="revolution/js/extensions/revolution.extension.actions.min.js"></script>
+                <script type="text/javascript" src="revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+                <script type="text/javascript" src="revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+                <script type="text/javascript" src="revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+                <script type="text/javascript" src="revolution/js/extensions/revolution.extension.migration.min.js"></script>
+                <script type="text/javascript" src="revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+                <script type="text/javascript" src="revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+                <script type="text/javascript" src="revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+                <script type="text/javascript" src="revolution/js/extensions/revolution.extension.video.min.js"></script> -->
+
+    <script type="text/javascript">
+        var revapi263,
+            tpj;
+        (function () {
+            if (!/loaded|interactive|complete/.test(document.readyState))
+                document.addEventListener("DOMContentLoaded", onLoad);
+            else
+                onLoad();
+            function onLoad() {
+                if (tpj === undefined) {
+                    tpj = jQuery;
+                    if ("off" == "on")
+                        tpj.noConflict();
+                }
+                if (tpj("#rev_slider_35_1").revolution == undefined) {
+                    revslider_showDoubleJqueryError("#rev_slider_35_1");
+                } else {
+                    var revOffset = tpj(window).width() <= 767 ? '77px' : '128px';
+                    revapi263 = tpj("#rev_slider_35_1").show().revolution({
+                        sliderType: "standard",
+                        jsFileLocation: "revolution/js/",
+                        sliderLayout: "fullwidth",
+                        dottedOverlay: "none",
+                        delay: 9000,
+                        navigation: {
+                            keyboardNavigation: "on",
+                            keyboard_direction: "horizontal",
+                            mouseScrollNavigation: "off",
+                            mouseScrollReverse: "default",
+                            onHoverStop: "off",
+                            touch: {
+                                touchenabled: "on",
+                                touchOnDesktop: "on",
+                                swipe_threshold: 75,
+                                swipe_min_touches: 1,
+                                swipe_direction: "horizontal",
+                                drag_block_vertical: false
+                            },
+                            tabs: {
+                                enable: true,
+                                style: 'erinyen',
+                                direction: 'horizontal',
+                                h_align: "center",
+                                v_align: "bottom",
+                                h_offset: -480,
+                                v_offset: 80,
+                                space: 25,
+                                hide_onleave: false,
+                                hide_onmobile: false,
+                                wrapper_padding: 0,
+                                width: 20,
+                                height: ['auto'],
+                                wrapper_color: 'transparent',
+                                wrapper_opacity: '0',
+                                tmp: '<span class="alt-font text-extra-dark-gray">{{param1}}</span>',
+                            }
+                        },
+                        responsiveLevels: [1240, 1025, 992, 480],
+                        visibilityLevels: [1240, 1024, 778, 480],
+                        gridwidth: [1140, 1024, 778, 480],
+                        gridheight: [870, 640, 910, 868],
+                        lazyType: "none",
+                        shadow: 0,
+                        spinner: "spinner5",
+                        stopLoop: "on",
+                        stopAfterLoops: 0,
+                        stopAtSlide: 1,
+                        shuffle: "off",
+                        autoHeight: "off",
+                        fullScreenAutoWidth: "off",
+                        fullScreenAlignForce: "off",
+                        fullScreenOffsetContainer: "",
+                        fullScreenOffset: revOffset,
+                        disableProgressBar: "on",
+                        hideThumbsOnMobile: "off",
+                        hideSliderAtLimit: 0,
+                        hideCaptionAtLimit: 0,
+                        hideAllCaptionAtLimit: 0,
+                        debugMode: false,
+                        fallbacks: {
+                            simplifyAll: "off",
+                            nextSlideOnWindowFocus: "off",
+                            disableFocusListener: false,
+                        }
+                    });
+                }
+                ; /* END OF revapi call */
+
+                BubbleMorphAddOn(jQuery, revapi263);
+            }
+            ; /* END OF ON LOAD FUNCTION */
+        }()); /* END OF WRAPPING FUNCTION */
+    </script>
+</body>
+
+</html>
