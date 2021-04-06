@@ -22,7 +22,7 @@
                                     <h1
                                         class="alt-font font-weight-700 title-large text-white text-uppercase letter-spacing-minus-4px margin-55px-bottom sm-letter-spacing-minus-1px sm-margin-30px-bottom text-shadow-extra-large md-no-text-shadow xs-w-85 mx-auto mx-sm-0">
                                         {{sliderpicture.subtitle}}</h1>
-                                    <a href="{% url 'single' %}"
+                                    <a href="{% url 'product-grid' %}"
                                         class="btn btn-large btn-fancy btn-round-edge-small btn-box-shadow btn-golden-brown btn-box-shadow align-self-center">Илүү
                                         ихийг</a>
                                 </div>
@@ -43,7 +43,7 @@
                                     <h1
                                         class="alt-font font-weight-700 title-large text-white text-uppercase letter-spacing-minus-4px margin-55px-bottom sm-letter-spacing-minus-1px sm-margin-30px-bottom text-shadow-extra-large md-no-text-shadow xs-w-85 mx-auto mx-sm-0">
                                         {{sliderpicture.subtitle2}}</h1>
-                                    <a href="{% url 'single' %}"
+                                    <a href="{% url 'product-grid' %}"
                                         class="btn btn-large btn-fancy btn-round-edge-small btn-box-shadow btn-golden-brown align-self-center">Илүү
                                         ихийг</a>
                                 </div>
@@ -64,7 +64,7 @@
                                     <h1
                                         class="alt-font font-weight-700 title-large text-white text-uppercase letter-spacing-minus-4px margin-55px-bottom sm-letter-spacing-minus-1px sm-margin-30px-bottom text-shadow-extra-large md-no-text-shadow xs-w-85 mx-auto mx-sm-0">
                                         {{sliderpicture.subtitle3}}</h1>
-                                    <a href="{% url 'single' %}"
+                                    <a href="{% url 'product-grid' %}"
                                         class="btn btn-large btn-fancy btn-round-edge-small btn-box-shadow btn-golden-brown align-self-center">Илүү
                                         ихийг</a>
                                 </div>
@@ -93,66 +93,25 @@
 <section class="padding-5-half-rem-lr lg-padding-2-half-rem-lr sm-no-padding py-0 top1" id="down">
     <div class="container-fluid">
         <div class="row row-cols-1 row-cols-xl-4 row-cols-md-2">
+            {% for category in categories %}
             <!-- start category item -->
             <div class="col shop-category-style-01 wow animate__fadeIn">
                 <div class="shop-product lg-margin-30px-bottom">
                     <div class="shop-product-image">
-                        <img src="{% static '/images/ratio/KAR_1068.jpg' %}" class="w-100" alt="" />
+                        <img src="{{category.category_picture.url}}" class="w-100" alt="" />
                         <div class="shop-product-overlay bg-transparent-gradient-light-red-orange"></div>
                     </div>
                     <div
                         class="shop-product-content d-flex align-items-center bg-white xl-padding-20px-lr padding-30px-lr padding-5px-tb">
-                        <a href="{% url 'single' %}"
-                            class="alt-font font-weight-500 text-extra-dark-gray d-inline-block align-middle text-uppercase mr-auto">Эрэгтэй
-                            загвар</a>
-                        <a href="{% url 'single' %}"><i
+                        <a href="{% url 'product-grid' %}"
+                            class="alt-font font-weight-500 text-extra-dark-gray d-inline-block align-middle text-uppercase mr-auto">{{category.name}}</a>
+                        <a href="{% url 'product-grid' %}"><i
                                 class="line-icon-Arrow-OutRight icon-large text-extra-dark-gray align-middle margin-15px-left"></i></a>
                     </div>
                 </div>
             </div>
             <!-- end category item -->
-            <!-- start category item -->
-            <div class="col shop-category-style-01 wow animate__fadeIn" data-wow-delay="0.2s">
-                <div class="shop-product lg-margin-30px-bottom">
-                    <div class="shop-product-image">
-                        <img src="{% static '/images/ratio/KAR_1401.jpg' %}" class="w-100" alt="" />
-                        <div class="shop-product-overlay bg-transparent-gradient-light-red-orange"></div>
-                    </div>
-                    <div
-                        class="shop-product-content d-flex align-items-center bg-white xl-padding-20px-lr padding-30px-lr padding-5px-tb">
-                        <a href="{% url 'single' %}"
-                            class="alt-font font-weight-500 text-extra-dark-gray d-inline-block align-middle text-uppercase mr-auto">2020
-                            оны шинэ загвар</a>
-                        <a href="{% url 'single' %}"><i
-                                class="line-icon-Arrow-OutRight icon-large text-extra-dark-gray align-middle margin-15px-left"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- end category item -->
-            <!-- start category banner -->
-            <div class="col wow animate__fadeIn" data-wow-delay="0.4s">
-                <a href="{% url 'single' %}"><img src="{% static '/images/ratio/KAR_1492.jpg' %}"
-                        class="sm-margin-30px-bottom" alt="" /></a>
-            </div>
-            <!-- start category banner -->
-            <!-- start category item -->
-            <div class="col shop-category-style-01 wow animate__fadeIn" data-wow-delay="0.6s">
-                <div class="shop-product">
-                    <div class="shop-product-image">
-                        <img src="{% static '/images/ratio/woman.fashin2.jpg' %}" class="w-100" alt="" />
-                        <div class="shop-product-overlay bg-transparent-gradient-light-red-orange"></div>
-                    </div>
-                    <div
-                        class="shop-product-content d-flex align-items-center bg-white xl-padding-20px-lr padding-30px-lr padding-5px-tb">
-                        <a href="{% url 'single' %}"
-                            class="alt-font font-weight-500 text-extra-dark-gray d-inline-block align-middle text-uppercase mr-auto">Эмэгтэй
-                            загвар</a>
-                        <a href="{% url 'single' %}"><i
-                                class="line-icon-Arrow-OutRight icon-large text-extra-dark-gray align-middle margin-15px-left"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- end category item -->
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -165,12 +124,13 @@
                 <!-- start filter navigation -->
                 <ul
                     class="shop-filter grid-filter nav nav-tabs text-uppercase justify-content-center text-extra-medium text-center alt-font font-weight-500 margin-6-half-rem-bottom margin-2-half-rem-top md-margin-4-rem-bottom sm-margin-20px-bottom">
-                    <li class="nav-item active"><a class="nav-link" data-filter="*" href="#" id="product">Шинэ
-                            бүтээгдхүүн</a><span class="tab-border bg-extra-dark-gray"></span></li>
-                    <li class="nav-item"><a class="nav-link" data-filter=".featured-products" href="#">Онцлох
-                            бүтээгдхүүн</a><span class="tab-border bg-extra-dark-gray"></span></li>
-                    <li class="nav-item"><a class="nav-link" data-filter=".best-sellers" href="#">Худалдан авалт
-                            өндөр</a><span class="tab-border bg-extra-dark-gray"></span></li>
+                    <li class="nav-item active"><a class="nav-link" data-filter="*" href="//">Санал болгох</a><span class="tab-border bg-extra-dark-gray"></span></li>
+                    <!-- <li class="nav-item"><a class="nav-link" data-filter=".latest-products" href="//">Шинэ бүтээгдэхүүн</a><span class="tab-border bg-extra-dark-gray"></span></li> -->
+                    <li class="nav-item"><a class="nav-link" data-filter=".featured-products" href="//">Онцлох
+                    бүтээгдэхүүн</a><span class="tab-border bg-extra-dark-gray"></span></li>
+                    <!-- <li class="nav-item"><a class="nav-link" data-filter=".latest-products" href="//">Шинэ
+                            бүтээгдхүүн</a><span class="tab-border bg-extra-dark-gray"></span></li> -->
+                    <li class="nav-item"><a class="nav-link" data-filter=".hassale-products" href="//">Хямдралтай бүтээгдэхүүн</a><span class="tab-border bg-extra-dark-gray"></span></li>
                 </ul>
                 <!-- end filter navigation -->
             </div>
@@ -184,18 +144,28 @@
 
                     <li class="grid-sizer"></li>
 
-                    {% for product in pro %}
-                    <li class="grid-item featured-products">
-
+                   
+                    {% for product in all_products %}
+                    <li class="grid-item 
+                    {% if product.sale %}
+                        hassale-products
+                    {% endif %}
+                    {% if product.is_featured %}
+                        featured-products
+                    {% endif %}
+                    
+                    ">
                         <div class="product-box margin-45px-bottom lg-margin-25px-bottom xs-no-margin-bottom">
                             <!-- start product image -->
 
                             <div class="product-image">
-                                <a href="{% url 'single' %}">
+                                <a href="{% url 'product-grid' %}">
                                     <img class="default-image" src="{{product.img.url}}" alt="asd" />
                                     <img class="hover-image" data-action="zoom" src="{{product.img2.url}}" alt="asd" />
                                     {% if product.sale %}
-                                    <span class="product-badge green">sale</span>
+                                    <span class="product-badge green">Хямдралтай</span>
+                                    {% elif product.is_featured %}
+                                    <span class="product-badge green">Онцгой</span>
                                     {% endif %}
                                 </a>
                                 <div class="product-overlay bg-gradient-extra-midium-gray-transparent"></div>
@@ -204,7 +174,7 @@
                             <!-- end product image -->
                             <!-- start product footer -->
                             <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
-                                <a href="{% url 'single' %}"
+                                <a href="{% url 'product-grid' %}"
                                     class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block">{{product.name}}</a>
                                 <div class="product-price text-medium">{{product.price}}₮</div>
                             </div>
@@ -215,7 +185,7 @@
                 </ul>
             </div>
             <div class="col-12 text-center margin-3-rem-top wow animate__fadeIn" data-wow-delay="0.4s">
-                <a href="{% url 'single' %}" class="btn btn-medium btn-fancy btn-transparent-black">Цуглуулга</a>
+                <a href="{% url 'product-grid' %}" class="btn btn-medium btn-fancy btn-transparent-black">Цуглуулга</a>
             </div>
         </div>
     </div>
@@ -292,8 +262,8 @@
                                                         class="feather icon-feather-clock margin-10px-right"></i>{{address.time}}</span>
                                                 <div class="panel-body feature-box feature-box-left-icon-middle">
                                                     <div class="feature-box-icon margin-30px-right md-margin-5px-right">
-                                                        <img class="rounded-circle w-110px h-110px border-all border-width-6px border-color-white box-shadow-large margin-15px-right md-w-70px md-h-70px border-radius-recovery"
-                                                            src="{{address.img.url}}" alt="">
+                                                        <img class="rounded-circle w-210px h-210px border-all border-width-6px border-color-white box-shadow-large margin-15px-right md-w-150px md-h-150px border-radius-recovery"
+                                                            src="{{address.img.url}}" alt="{{address.name}} image">
                                                     </div>
                                                     <div class="feature-box-content last-paragraph-no-margin">
                                                         <div class="panel-title">
@@ -310,113 +280,6 @@
                                         </div>
                                     </div>
                                     {% endfor %}
-                                    <div class="col-12 col-lg-6">
-                                        <div class="panel border-color-black-transparent">
-                                            <div class="panel-heading">
-                                                <span class="panel-time"><i
-                                                        class="feather icon-feather-clock margin-10px-right"></i>10:00 -
-                                                    20:00</span>
-                                                <div class="panel-body feature-box feature-box-left-icon-middle">
-                                                    <div class="feature-box-icon margin-30px-right md-margin-5px-right">
-                                                        <img class="rounded-circle w-110px h-110px border-all border-width-6px border-color-white box-shadow-large margin-15px-right md-w-70px md-h-70px border-radius-recovery"
-                                                            src="{% static '/images/ratio/Билэг.png' %}"
-                                                            data-action="zoom" alt="">
-                                                    </div>
-                                                    <div class="feature-box-content last-paragraph-no-margin">
-                                                        <div class="panel-title">
-                                                            <span
-                                                                class="text-extra-dark-gray d-inline-block font-weight-500 margin-5px-bottom">Билэг
-                                                                их дэлгүүр</span>
-                                                        </div>
-                                                        <p class="w-65 lg-w-85 md-w-90 xs-w-100">Хаяг. Монгол,
-                                                            Улаанбаатар хот, БГД 2-р хороо Энхтайваны өргөн чөлөө Гранд
-                                                            плаза</p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <div class="panel border-color-black-transparent">
-                                            <div class="panel-heading">
-                                                <span class="panel-time"><i
-                                                        class="feather icon-feather-clock margin-10px-right"></i>10:00 -
-                                                    20:00</span>
-                                                <div class="panel-body feature-box feature-box-left-icon-middle">
-                                                    <div class="feature-box-icon margin-30px-right md-margin-5px-right">
-                                                        <img class="rounded-circle w-110px h-110px border-all border-width-6px border-color-white box-shadow-large margin-15px-right md-w-70px md-h-70px border-radius-recovery"
-                                                            src="{% static '/images/ratio/grandplaza.PNG' %}"
-                                                            data-action="zoom" alt="">
-                                                    </div>
-                                                    <div class="feature-box-content last-paragraph-no-margin">
-                                                        <div class="panel-title">
-                                                            <span
-                                                                class="text-extra-dark-gray d-inline-block font-weight-500 margin-5px-bottom">Grand
-                                                                Plaza</span>
-                                                        </div>
-                                                        <p class="w-65 lg-w-85 md-w-90 xs-w-100">Хаяг. Монгол,
-                                                            Улаанбаатар хот, БГД 2-р хороо Энхтайваны өргөн чөлөө Гранд
-                                                            плаза</p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-lg-6">
-                                    <div class="panel border-color-transparent">
-                                        <div class="panel-heading">
-                                            <span class="panel-time"><i
-                                                    class="feather icon-feather-clock margin-10px-right"></i>10:00 -
-                                                19:30</span>
-                                            <div class="panel-body feature-box feature-box-left-icon-middle">
-                                                <div class="feature-box-icon margin-30px-right md-margin-5px-right">
-                                                    <img class="rounded-circle w-110px h-110px border-all border-width-6px border-color-white box-shadow-large margin-15px-right md-w-70px md-h-70px border-radius-recovery"
-                                                        src="{% static '/images/ratio/Алтжин.jpg' %}" alt="">
-                                                </div>
-                                                <div class="feature-box-content last-paragraph-no-margin">
-                                                    <div class="panel-title">
-                                                        <span
-                                                            class="text-extra-dark-gray d-inline-block font-weight-500 margin-5px-bottom">Алтжин
-                                                            Бөмбөгөр</span>
-                                                    </div>
-                                                    <p class="w-65 lg-w-85 md-w-90 xs-w-100">Хаяг. Монгол, Улаанбаатар
-                                                        хот, ЧД 2-р хороо Алтжин Бөмбөгөр худалдааны төв</p>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-lg-6">
-                                    <div class="panel border-color-transparent">
-                                        <div class="panel-heading">
-                                            <span class="panel-time"><i
-                                                    class="feather icon-feather-clock margin-10px-right"></i>10:00 -
-                                                20:00</span>
-                                            <div class="panel-body feature-box feature-box-left-icon-middle">
-                                                <div class="feature-box-icon margin-30px-right md-margin-5px-right">
-                                                    <img class="rounded-circle w-110px h-110px border-all border-width-6px border-color-white box-shadow-large margin-15px-right md-w-70px md-h-70px border-radius-recovery"
-                                                        src="{% static '/images/ratio/sunday.PNG' %}" alt="">
-                                                </div>
-                                                <div class="feature-box-content last-paragraph-no-margin">
-                                                    <div class="panel-title">
-                                                        <span
-                                                            class="text-extra-dark-gray d-inline-block font-weight-500 margin-5px-bottom">Sunday
-                                                            Plaza</span>
-                                                    </div>
-                                                    <p class="w-65 lg-w-85 md-w-90 xs-w-100">Хаяг. Монгол, Улаанбаатар
-                                                        хот, БЗД 14-р хороо Намьянжугийн гудамж. Сандэй плаза </p>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -426,7 +289,7 @@
         </div>
     </div>
 </section>
-<section id="about" class="bg-light-gray">
+<section id="aboutus" class="bg-light-gray">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-5 col-md-6 text-center margin-5-rem-bottom md-margin-3-rem-bottom wow animate__fadeIn"
@@ -435,28 +298,27 @@
             </div>
         </div>
         <div class="row">
-            {% for titles in abouts %}
             <div class="col-12 col-lg-4 pr-lg-0 d-flex md-margin-30px-bottom">
                 <div class="w-100 md-h-700px sm-h-550px xs-h-450px cover-background"
-                    style="background-image:url({{titles.img.url}});"></div>
+                    style="background-image:url({{about.img.url}});"></div>
             </div>
             <div class="col-12 col-lg-4 col-md-6 pl-lg-0 d-flex sm-margin-30px-bottom">
                 <div
                     class="justify-content-center w-100 d-flex flex-column bg-fast-blue padding-5-half-rem-lr lg-padding-3-rem-lr md-padding-4-rem-all">
                     <span
-                        class="text-extra-large alt-font font-weight-500 text-white margin-20px-bottom d-block">{{titles.title}}</span>
+                        class="text-extra-large alt-font font-weight-500 text-white margin-20px-bottom d-block">{{about.title}}</span>
 
-                    <p class="text-white opacity-7">{{titles.description}}</p>
+                    <p class="text-white opacity-7">{{about.description}}</p>
                     <a href="our-services.html"
                         class="btn btn-large btn-link text-white text-white-hover align-self-start"></a>
                 </div>
             </div>
             <div class="col-12 col-lg-4 col-md-6">
-                <img src="{{titles.img2.url}}" alt="" data-no-retina="">
+                <img src="{{about.img2.url}}" alt="" data-no-retina="">
                 <div
                     class="bg-white padding-3-half-rem-lr padding-3-rem-tb lg-padding-2-rem-all md-padding-2-half-rem-all sm-padding-4-rem-all last-paragraph-no-margin">
                     <span class="alt-font text-extra-dark-gray font-weight-500 margin-10px-bottom d-block"></span>
-                    <p>{{titles.description2}}</p>
+                    <p>{{about.description2}}</p>
                 </div>
             </div>
             <div>
@@ -474,30 +336,37 @@
                 <div class="between1">
                     <h1><i class="fa fa-user" aria-hidden="true"></i></h1>
 
-                    <p class="justy">{{titles.employee}}</p>
+                    <p class="justy">{{about.employee}}</p>
                 </div>
             </div>
             <div class="col-6 col-lg-3">
                 <div class="between1">
                     <h1><i class="fas fa-users"></i></h1>
-                    <p class="justy">{{titles.customer}}</p>
+                    <p class="justy">{{about.customer}}</p>
                 </div>
             </div>
             <div class="col-6 col-lg-3">
                 <div class="between1">
                     <h1><i class="fas fa-chart-bar"></i></h1>
-                    <p class="justy">{{titles.user}}</p>
+                    <p class="justy">{{about.user}}</p>
                 </div>
             </div>
             <div class="col-6 col-lg-3">
                 <div class="between1">
                     <h1><i class="far fa-building"></i></h1>
-                    <p class="justy">{{titles.branch}}</p>
+                    <p class="justy">{{about.branch}}</p>
                 </div>
             </div>
         </div>
-        {% endfor %}
     </div>
     </div>
 </section>
+<script>
+    // function pressDataFilter() {
+        console.log("test")
+        document.getElementById("default-data-filter").click();
+        console.log("test")
+    // }
+    // pressDataFilter()
+</script>
 {% endblock %}

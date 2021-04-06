@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+{% csrf_token %}
 {% static "images" as baseUrl %}
 <!-- end header -->
 <!-- start page title -->
@@ -40,21 +41,17 @@
                     <span
                         class="shop-title alt-font font-weight-500 text-extra-dark-gray d-block margin-20px-bottom">Загвар</span>
                     <ul id="productsContainer" class="list-style-07 filter-category">
-                        <li><a href="//"><input id="long" type="checkbox" onclick="filterProducts('long')"
-                                    class="product-cb  product-category-cb">Урт түрүүтэй</a><span
+                        <li><a href="//"><input id="all" type="radio" name="searchCategoryName" onclick="filterProducts()"
+                            class="product-cb  product-category-cb" value="all" checked><label for="all">Бүгд</label></a><span
+                        class="item-qty"></span></li>
+                        {% for category in categories %}
+                        <li><a href="//"><input id="{{category.name}}" type="radio" name="searchCategoryName" onclick="filterProducts()"
+                                    class="product-cb  product-category-cb" value="{{category.name}}"><label for="{{category.name}}">{{category.name}}</label></a><span
                                 class="item-qty"></span></li>
-                        <li><a href="//"><input id="short" type="checkbox" onclick="filterProducts('short')"
-                                    class="product-cb product-category-cb">Богино түрүүтэй</a><span
-                                class="item-qty"></span></li>
-                        <li><a href="//"><input id="man" type="checkbox" onclick="filterProducts('man')"
-                                    class="product-cb product-category-cb">Эрэгтэй</a><span class="item-qty"></span>
-                        </li>
-                        <li><a href="//"><input id="woman" type="checkbox" onclick="filterProducts('woman')"
-                                    class="product-cb product-category-cb">Эмэгтэй</a><span class="item-qty"></span>
-                        </li>
+                        {% endfor %}
                     </ul>
                 </div>
-                <div
+                <!-- <div
                     class="border-bottom border-color-medium-gray padding-3-rem-bottom margin-3-rem-bottom wow animate__fadeIn">
                     <span
                         class="shop-title alt-font font-weight-500 text-extra-dark-gray d-block margin-20px-bottom">Өнгний
@@ -67,7 +64,7 @@
                                     class="product-cb paroduct-color-cb"
                                     style="background-color:#b7b5b5">Саарал</a><span class="item-qty"></span></li>
                     </ul>
-                </div>
+                </div> -->
                 <div
                     class="border-bottom border-color-medium-gray padding-3-rem-bottom margin-3-rem-bottom wow animate__fadeIn">
                     <span
@@ -88,6 +85,103 @@
     </div>
 </section>
 <!-- end section -->
+
+<script>
+    let productsContainer = document.querySelector("#productsContainer");
+let productsContainerHelper = '<li class="grid-sizer"></li>';
+
+let products = [];
+function productTemplate(product) {
+    console.log(product)
+	return `<li class="grid-item wow animate__fadeIn" data-wow-delay="0.2s ${product.category}">
+                <div class="product-box margin-25px-bottom xs-margin-15px-bottom">
+                    <!-- start product image -->
+                    <div class="product-image border-radius-6px">
+                        <a href="/product-single/${product.id}">
+                            <img class="default-image" src=${product.imgSrc1} alt=""/>
+                            <img class="hover-image" data-action="zoom" src=${product.imgSrc2} alt=""/>
+                            ${product.hassale ? '<span class="product-badge green">sale</span>' : ""}
+                        </a>
+                        <div class="product-overlay bg-gradient-extra-midium-gray-transparent"></div>
+                        <div class="product-hover-bottom text-center padding-35px-tb">
+                            
+                            
+                        </div>
+                    </div>
+                    <!-- end product image -->
+                    <!-- start product footer -->
+                    <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
+                        <a href="/product-single/${product.id}" class="text-extra-dark-gray font-weight-500 d-inline-block">${product.name}</a>
+                        <div class="product-price text-medium">${product.price}₮</div>
+                    </div>
+                    <!-- end product footer -->
+                </div>
+            </li> `;
+}
+var checkboxes_on_category = [];
+function filterProducts() {
+
+    let product_category_name = document.querySelector('input[name="searchCategoryName"]:checked').value;
+
+	let elemValues = document.querySelector("#price-amount").value;
+	let valuesArr = elemValues.split(" - ");
+	let values = [
+		valuesArr[0].slice(1, valuesArr[0].length),
+		valuesArr[1].slice(1, valuesArr[1].length),
+	];
+	let intValues = [parseInt(values[0]), parseInt(values[1])];
+	let filteredElements = null;
+
+    if (product_category_name == "all") {
+        filteredElements = products.filter(
+            (product) =>
+                product.price > intValues[0] &&
+                product.price < intValues[1]
+        );
+    } else {
+        filteredElements = products.filter(
+            (product) =>
+                product.price > intValues[0] &&
+                product.price < intValues[1] &&
+                product.category == product_category_name
+        );
+    }
+    
+	let filteredHtml = filteredElements.map((product) =>
+		productTemplate(product)
+	);
+	let productsHtml = productsContainerHelper + filteredHtml.join("");
+	console.log(filteredElements);
+	productsContainer.innerHTML = productsHtml;
+}
+
+function fillProducts() {
+    // console.log("{{ categories }}")
+	$.ajax({
+		method: "get",
+		url: "http://127.0.0.1:8000/all-products",
+		success: function (message) {
+            products = [...message.products]
+            checkboxes_on_category = message.category.map((cat) => {
+                return {
+                    id: cat.id,
+                    name: cat.name,
+                    pressedState: false
+                }
+            })
+            let productElements = products.map((product) => productTemplate(product));
+
+            let productsHtml = productsContainerHelper + productElements.join("");
+            productsContainer.innerHTML = productsHtml;
+		},
+		error: function (message) {
+			console.log(message);
+		},
+	});
+}
+fillProducts();
+
+</script>
 
 <!-- footer -->
 {% endblock %}

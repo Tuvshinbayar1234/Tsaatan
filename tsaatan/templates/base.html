@@ -21,11 +21,12 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
     <!-- revolution slider -->
-    <link rel='stylesheet' href="revolution/revolution-addons/bubblemorph/css/revolution.addon.bubblemorph.css"
+    <!-- <link rel='stylesheet' href="revolution/revolution-addons/bubblemorph/css/revolution.addon.bubblemorph.css"
         type='text/css' media='all' />
     <link rel="stylesheet" type="text/css" href="{% static 'revolution/css/settings.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'revolution/css/layers.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'revolution/css/navigation.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'revolution/css/navigation.css' %}"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
@@ -42,11 +43,11 @@
                     <div class="col-auto d-none d-sm-block text-right px-lg-0 font-size-0">
                         <div class="top-bar-contact">
                             <span class="top-bar-contact-list border-none md-no-padding-right">
-                                <i class="feather icon-feather-phone-call icon-extra-small text-white"></i>7715 1414
+                                <i class="feather icon-feather-phone-call icon-extra-small text-white"></i>{{global_settings.phone}}
                             </span>
                             <span class="top-bar-contact-list d-none d-lg-inline-block border-none pr-0">
                                 <i class="feather icon-feather-map-pin icon-extra-small text-white"></i>
-                                'Төв салбар' Билэг их дэлгүүр, 5-р давхар
+                                {{global_settings.center_address}}
                             </span>
                         </div>
                     </div>
@@ -59,11 +60,11 @@
             <div class="container-fluid nav-header-container">
                 <div class="col-6 col-lg-2 mr-auto pl-lg-0">
                     <a class="navbar-brand" href="#">
-                        <img src="{% static 'images/logo.png' %}" data-at2x="{% static 'images/logo.png' %}"
+                        <img src="{{global_settings.logo.url}}" data-at2x="{{global_settings.logo.url}}"
                             class="default-logo" alt="">
-                        <img src="{% static 'images/logo.png' %}" data-at2x="{% static 'images/logo.png' %}"
+                        <img src="{{global_settings.logo.url}}" data-at2x="{{global_settings.logo.url}}"
                             class="alt-logo" alt="">
-                        <img src="{% static 'images/logo.png' %}" data-at2x="{% static 'images/logo.png' %}"
+                        <img src="{{global_settings.logo.url}}" data-at2x="{{global_settings.logo.url}}"
                             class="mobile-logo" alt="">
                     </a>
                 </div>
@@ -78,40 +79,40 @@
                     <div class=" collapse navbar-collapse justify-content-center" id="navbarNav">
                         <ul class="navbar-nav alt-font">
                             <li class="nav-item dropdown megamenu">
-                                <a href="#" class="nav-link">Нүүр</a>
-                                <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"
-                                    aria-hidden="true"></i>
+                                <a href="{% url 'home' %}#" class="nav-link">Нүүр</a>
+                                <!-- <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"
+                                    aria-hidden="true"></i> -->
 
                             </li>
                             <li class="nav-item dropdown simple-dropdown">
-                                <a href="#product" class="nav-link">Бүтээгдэхүүн</a>
-                                <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"
-                                    aria-hidden="true"></i>
+                                <a href="{% url 'home' %}#product" class="nav-link">Бүтээгдэхүүн</a>
+                                <!-- <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"
+                                    aria-hidden="true"></i> -->
 
                             </li>
                             <li class="nav-item dropdown simple-dropdown">
-                                <a href="#shop" class="nav-link">Урамшуулал</a>
-                                <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"
-                                    aria-hidden="true"></i>
-
-                            </li>
-                            <li class="nav-item dropdown megamenu">
-                                <a href="#address" class="nav-link">Хаяг байршил</a>
-                                <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"
-                                    aria-hidden="true"></i>
+                                <a href="{% url 'home' %}#shop" class="nav-link">Урамшуулал</a>
+                                <!-- <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"
+                                    aria-hidden="true"></i> -->
 
                             </li>
                             <li class="nav-item dropdown simple-dropdown">
-                                <a href="#about" class="nav-link">Бидний тухай</a>
-                                <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"
-                                    aria-hidden="true"></i>
+                                <a href="{% url 'home' %}#address" class="nav-link">Хаяг байршил</a>
+                                <!-- <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"
+                                    aria-hidden="true"></i> -->
+
+                            </li>
+                            <li class="nav-item dropdown simple-dropdown">
+                                <a href="{% url 'home' %}#aboutus" class="nav-link">Бидний тухай</a>
+                                <!-- <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"
+                                    aria-hidden="true"></i> -->
                             </li>
                             <li class="nav-item dropdown simple-dropdown">
                                 <a href="https://play.google.com/store/apps"
                                     class="btn btn-large btn-transparent-dark-gray d-table d-lg-inline-block margins">App
                                     татах<i class="fas fa-arrow-right right-icon"></i></a>
-                                <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"
-                                    aria-hidden="true"></i>
+                                <!-- <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"
+                                    aria-hidden="true"></i> -->
                             </li>
                         </ul>
                     </div>
@@ -132,10 +133,8 @@
                     <!-- start footer column -->
                     <div class="col-12 col-lg-3 col-md-4 col-sm-6 md-margin-40px-bottom xs-margin-25px-bottom">
                         <a id="about" class="footer-logo margin-25px-bottom d-inline-block"><img
-                                src="{% static 'images/logo.png' %}"></a>
-                        {% for titles in abouts %}
-                        <p class="w-95 lg-w-100">{{titles.description2}}</p>
-                        {% endfor %}
+                                src="{{global_settings.logo.url}}"></a>
+                        <p class="w-95 lg-w-100">{{global_settings.center_address}}</p>
                     </div>
                     <!-- end footer column -->
                     <!-- start footer column -->
@@ -216,8 +215,7 @@
                         <ul>
                             <li><a href="#">Холбоо барих</a></li>
                             <li><a href="tel:77151414"><i
-                                        class="feather icon-feather-phone-call icon-extra-small text-white"></i> 7715
-                                    1414
+                                        class="feather icon-feather-phone-call icon-extra-small text-white"></i> {{global_settings.phone}}
                                 </a></li>
 
                         </ul>
@@ -237,12 +235,12 @@
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 
     <!-- revolution js files -->
-    <script type="text/javascript" src="{% static 'revolution/js/jquery.themepunch.tools.min.js' %}"></script>
+    <!-- <script type="text/javascript" src="{% static 'revolution/js/jquery.themepunch.tools.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'revolution/js/jquery.themepunch.revolution.min.js' %}"></script>
 
-    <!-- BUBBLEMORPH ADD-ON FILES -->
+    BUBBLEMORPH ADD-ON FILES
     <script type='text/javascript'
-        src='revolution/revolution-addons/bubblemorph/js/revolution.addon.bubblemorph.min.js'></script>
+        src='revolution/revolution-addons/bubblemorph/js/revolution.addon.bubblemorph.min.js'></script> -->
     <!-- slider revolution 5.0 extensions (load extensions only on local file systems ! the following part can be removed on server for on demand loading) -->
     <!-- <script type="text/javascript" src="revolution/js/extensions/revolution.extension.actions.min.js"></script>
                 <script type="text/javascript" src="revolution/js/extensions/revolution.extension.carousel.min.js"></script>
@@ -269,7 +267,7 @@
                         tpj.noConflict();
                 }
                 if (tpj("#rev_slider_35_1").revolution == undefined) {
-                    revslider_showDoubleJqueryError("#rev_slider_35_1");
+                    // revslider_showDoubleJqueryError("#rev_slider_35_1");
                 } else {
                     var revOffset = tpj(window).width() <= 767 ? '77px' : '128px';
                     revapi263 = tpj("#rev_slider_35_1").show().revolution({
@@ -342,7 +340,7 @@
                 }
                 ; /* END OF revapi call */
 
-                BubbleMorphAddOn(jQuery, revapi263);
+                // BubbleMorphAddOn(jQuery, revapi263);
             }
             ; /* END OF ON LOAD FUNCTION */
         }()); /* END OF WRAPPING FUNCTION */

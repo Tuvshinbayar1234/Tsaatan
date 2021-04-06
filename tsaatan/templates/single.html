@@ -14,45 +14,28 @@
                                 data-slider-options='{ "spaceBetween": 10, "watchOverflow": true, "navigation": { "nextEl": ".slider-product-next", "prevEl": ".slider-product-prev" }, "thumbs": { "swiper": { "el": ".product-image-thumb", "slidesPerView": "auto", "spaceBetween": 15, "direction": "vertical", "navigation": { "nextEl": ".swiper-thumb-next", "prevEl": ".swiper-thumb-prev" } } } }'
                                 data-thumb-slider-md-direction="horizontal">
                                 <div class="swiper-wrapper">
+                                    {% if product.img %}
                                     <!-- start slider item -->
                                     <div class="swiper-slide">
-                                        <a class="gallery-link" href="{% static '/images/ratio/5.jpg' %}"><img
-                                                class="w-100" src="{% static '/images/ratio/5.jpg' %}" alt=""></a>
+                                        <a class="gallery-link" href="{{product.img.url}}"><img
+                                                class="w-100" src="{{product.img.url}}" alt=""></a>
                                     </div>
                                     <!-- end slider item -->
+                                    {% endif %}
+                                    {% if product.img2 %}
                                     <!-- start slider item -->
                                     <div class="swiper-slide">
-                                        <a class="gallery-link"
-                                            href="{% static '/images/ratio/productback3.jpg' %}"><img class="w-100"
-                                                src="{% static '/images/ratio/productback3.jpg' %}" alt=""></a>
+                                        <a class="gallery-link" href="{{product.img2.url}}"><img
+                                                class="w-100" src="{{product.img2.url}}" alt=""></a>
                                     </div>
                                     <!-- end slider item -->
-                                    <!-- start slider item -->
+                                    {% endif %}
+                                    {% for picture in slider_pictures %}
                                     <div class="swiper-slide">
-                                        <a class="gallery-link" href="{% static '/images/ratio/5.jpg' %}"><img
-                                                class="w-100" src="{% static '/images/ratio/5.jpg' %}" alt=""></a>
+                                        <a class="gallery-link" href="{{picture.picture.url}}"><img
+                                                class="w-100" src="{{picture.picture.url}}" alt=""></a>
                                     </div>
-                                    <!-- end slider item -->
-                                    <!-- start slider item -->
-                                    <div class="swiper-slide">
-                                        <a class="gallery-link"
-                                            href="{% static '/images/ratio/productback3.jpg' %}"><img class="w-100"
-                                                src="{% static '/images/ratio/productback3.jpg' %}" alt=""></a>
-                                    </div>
-                                    <!-- end slider item -->
-                                    <!-- start slider item -->
-                                    <div class="swiper-slide">
-                                        <a class="gallery-link" href="{% static '/images/ratio/5.jpg' %}"><img
-                                                class="w-100" src="{% static '/images/ratio/5.jpg' %}" alt=""></a>
-                                    </div>
-                                    <!-- end slider item -->
-                                    <!-- start slider item -->
-                                    <div class="swiper-slide">
-                                        <a class="gallery-link"
-                                            href="{% static '/images/ratio/productback3.jpg' %}"><img class="w-100"
-                                                src="{% static '/images/ratio/productback3.jpg' %}" alt=""></a>
-                                    </div>
-                                    <!-- end slider item -->
+                                    {% endfor %}
                                 </div>
                             </div>
                             <div class="slider-product-next swiper-button-next text-extra-dark-gray"><i
@@ -65,18 +48,18 @@
                             <div
                                 class="swiper-container product-image-thumb slider-vertical padding-15px-lr padding-45px-bottom md-no-padding left-0px">
                                 <div class="swiper-wrapper">
+                                    {% if product.img %}
                                     <div class="swiper-slide"><img class="w-100"
-                                            src="{% static '/images/ratio/5.jpg' %}" alt=""></div>
+                                        src="{{product.img.url}}" alt=""></div>
+                                    {% endif %}
+                                    {% if product.img2 %}
                                     <div class="swiper-slide"><img class="w-100"
-                                            src="{% static '/images/ratio/productback3.jpg' %}" alt=""></div>
+                                        src="{{product.img2.url}}" alt=""></div>
+                                    {% endif %}
+                                    {% for picture in slider_pictures %}
                                     <div class="swiper-slide"><img class="w-100"
-                                            src="{% static '/images/ratio/5.jpg' %}" alt=""></div>
-                                    <div class="swiper-slide"><img class="w-100"
-                                            src="{% static '/images/ratio/productback3.jpg' %}" alt=""></div>
-                                    <div class="swiper-slide"><img class="w-100"
-                                            src="{% static '/images/ratio/5.jpg' %}" alt=""></div>
-                                    <div class="swiper-slide"><img class="w-100"
-                                            src="{% static '/images/ratio/productback3.jpg' %}" alt=""></div>
+                                            src="{{picture.picture.url}}" alt=""></div>
+                                    {% endfor %}
                                 </div>
                             </div>
                             <div class="swiper-thumb-next-prev text-center">
@@ -92,8 +75,8 @@
                         <!-- start breadcrumb -->
                         <ul>
                             <li><a href="#">Нүүр</a></li>
-                            <li><a href="#">Бүтээгдхүүн</a></li>
-                            <li>Урт түрүүтэй</li>
+                            <li><a href="{% url 'product-grid' %}">Бүтээгдхүүн</a></li>
+                            <li>{{product.category}}</li>
                         </ul>
                         <!-- end breadcrumb -->
                     </div>
@@ -101,14 +84,13 @@
                         <div class="flex-grow-1">
                             <div
                                 class="text-extra-dark-gray font-weight-500 text-extra-large alt-font margin-5px-bottom">
-                                Урт түрүүтэй</div>
-                            <span class="product-price text-extra-medium">480000₮</span>
+                                {{product.name}}</div>
+                            <span class="product-price text-extra-medium">{{product.price}}₮</span>
                         </div>
 
                     </div>
                     <div class="last-paragraph-no-margin">
-                        <p>Lorem ipsum is simply dummy text of the printing and typesetting industry lorem ipsum has
-                            been the standard dummy text typesetting industry.</p>
+                        <p>{{product.description}}</p>
                     </div>
                     <div class="margin-4-rem-top">
                     </div>
@@ -140,40 +122,21 @@
                 <ul
                     class="product-listing shop-wrapper grid grid-loading grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
                     <li class="grid-sizer"></li>
+                    {% for featured_product in featured_products %}
                     <!-- start shop item -->
                     <li class="grid-item">
                         <div class="product-box">
                             <!-- start product image -->
                             <div class="product-image border-radius-6px">
-                                <a href="#">
-                                    <img class="default-image" src="{% static '/images/ratio/product1.jpg' %}" alt="" />
-                                    <img class="hover-image" src="{% static '/images/ratio/5.jpg' %}" alt="" />
-                                </a>
-                                <div class="product-overlay bg-gradient-extra-midium-gray-transparent"></div>
-                                <div class="product-hover-bottom text-center padding-30px-tb">
-
-                                </div>
-                            </div>
-                            <!-- end product image -->
-                            <!-- start product footer -->
-                            <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
-                                <a href="#" class="text-extra-dark-gray font-weight-500 d-inline-block">Урт
-                                    түрүүтэй</a>
-                                <div class="product-price text-medium">470000₮</div>
-                            </div>
-                            <!-- end product footer -->
-                        </div>
-                    </li>
-                    <!-- end shop item -->
-                    <!-- start shop item -->
-                    <li class="grid-item">
-                        <div class="product-box">
-                            <!-- start product image -->
-                            <div class="product-image border-radius-6px">
-                                <a href="#">
-                                    <img class="default-image" src="{% static '/images/ratio/product7.jpg' %}" alt="" />
-                                    <img class="hover-image" src="{% static '/images/ratio/productback3.jpg' %}"
-                                        alt="" />
+                                <a href="{% url 'product-single' id=featured_product.id %}">
+                                    <img class="default-image" src="{{featured_product.img.url}}" alt="" />
+                                    <img class="hover-image" src="{{featured_product.img2.url}}" alt="" />
+                                    {% if featured_product.is_featured %}
+                                    <span class="product-badge green">Онцгой</span>
+                                    {% endif %}
+                                    {% if featured_product.sale %}
+                                    <span class="product-badge green">Хямдралтай</span>
+                                    {% endif %}
                                 </a>
                                 <div class="product-overlay bg-gradient-extra-midium-gray-transparent"></div>
                                 <div class="product-hover-bottom text-center padding-35px-tb">
@@ -183,67 +146,14 @@
                             <!-- end product image -->
                             <!-- start product footer -->
                             <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
-                                <a href="#" class="text-extra-dark-gray font-weight-500 d-inline-block">Богино
-                                    түрүүтэй</a>
-                                <div class="product-price text-medium">370000₮</div>
+                                <a href="{% url 'product-single' id=featured_product.id %}" class="text-extra-dark-gray font-weight-500 d-inline-block">{{featured_product.name}}</a>
+                                <div class="product-price text-medium">{{featured_product.price}}</div>
                             </div>
                             <!-- end product footer -->
                         </div>
                     </li>
                     <!-- end shop item -->
-                    <!-- start shop item -->
-                    <li class="grid-item">
-                        <div class="product-box">
-                            <!-- start product image -->
-                            <div class="product-image border-radius-6px">
-                                <a href="#">
-                                    <img class="default-image" src="{% static '/images/ratio/product5.jpg' %}" alt="" />
-                                    <img class="hover-image" src="{% static '/images/ratio/productback3.jpg' %}"
-                                        alt="" />
-                                    <span class="product-badge orange">hot</span>
-                                </a>
-                                <div class="product-overlay bg-gradient-extra-midium-gray-transparent"></div>
-                                <div class="product-hover-bottom text-center padding-35px-tb">
-
-                                </div>
-                            </div>
-                            <!-- end product image -->
-                            <!-- start product footer -->
-                            <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
-                                <a href="#" class="text-extra-dark-gray font-weight-500 d-inline-block">Урт
-                                    түрүүтэй</a>
-                                <div class="product-price text-medium">400000₮</div>
-                            </div>
-                            <!-- end product footer -->
-                        </div>
-                    </li>
-                    <!-- end shop item -->
-                    <!-- start shop item -->
-                    <li class="grid-item">
-                        <div class="product-box">
-                            <!-- start product image -->
-                            <div class="product-image border-radius-6px">
-                                <a href="#">
-                                    <img class="default-image" src="{% static '/images/ratio/product8.jpg' %}" alt="" />
-                                    <img class="hover-image" src="{% static '/images/ratio/5.jpg' %}" alt="" />
-                                    <span class="product-badge green">sale</span>
-                                </a>
-                                <div class="product-overlay bg-gradient-extra-midium-gray-transparent"></div>
-                                <div class="product-hover-bottom text-center padding-35px-tb">
-
-                                </div>
-                            </div>
-                            <!-- end product image -->
-                            <!-- start product footer -->
-                            <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
-                                <a href="#" class="text-extra-dark-gray font-weight-500 d-inline-block">Богино
-                                    түрүүтэй</a>
-                                <div class="product-price text-medium">3700000</div>
-                            </div>
-                            <!-- end product footer -->
-                        </div>
-                    </li>
-                    <!-- end shop item -->
+                    {% endfor %}
                 </ul>
             </div>
         </div>

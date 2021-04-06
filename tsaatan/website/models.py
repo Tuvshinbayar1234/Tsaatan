@@ -1,10 +1,11 @@
 from django.db import models
-
-# Create your models here.
+import datetime
+from django.utils import timezone
 
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
+    category_picture = models.ImageField(upload_to="category-pictures")
 
     def __str__(self):
         return self.name
@@ -12,15 +13,25 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
-    img = models.ImageField(upload_to="pics")
-    img2 = models.ImageField(upload_to="pics")
+    img = models.ImageField(upload_to="product-pictures")
+    img2 = models.ImageField(upload_to="product-pictures")
     price = models.IntegerField()
     sale = models.BooleanField(default=False)
+    # gender - {True - male, False - female}
+    gender = models.BooleanField(default=True)
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, null=True)
+    description = models.TextField(default="")
+    is_featured = models.BooleanField(default=False)
+    created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
+
+
+class ProductPicture(models.Model):
+    picture = models.ImageField(upload_to="product-pictures")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
 
 class SliderPicture(models.Model):
@@ -72,3 +83,11 @@ class About(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Settings(models.Model):
+
+    logo = models.ImageField(upload_to='settings')
+    phone = models.CharField(max_length=255, default="")
+    center_address = models.CharField(max_length=255, default="")
+    representation = models.TextField(default="")
